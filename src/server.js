@@ -31,19 +31,19 @@ const handleHead = (request, response, parsedUrl) => {
     }else{
         jsonHandler.notReal(request, response);
     }
-}
+};
 
 const handleGet = (request, response, parsedUrl) => {
-    if(parsedUrl.pathName == '/'){
+    if(parsedUrl.pathname == '/'){
         htmlHandler.getIndex(request, response);
-    }else if(parsedUrl.pathName == '/style.css'){
+    }else if(parsedUrl.pathname == '/style.css'){
         htmlHandler.getCSS(request, response)
-    }else if(parsedUrl.pathName == '/getUsers'){
-        htmlHandler.getUsers(request, response);
+    }else if(parsedUrl.pathname == '/getUsers'){
+        jsonHandler.getUsers(request, response);
     }else{
         jsonHandler.notReal(request, response);
     }
-}
+};
 
 const onRequest = (request, response) => {
     const parsedUrl = url.parse(request.url);
@@ -55,6 +55,6 @@ const onRequest = (request, response) => {
     }else{
         handleGet(request, response, parsedUrl);
     }
-}
+};
 
 http.createServer(onRequest).listen(port);
