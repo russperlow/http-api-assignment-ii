@@ -56,7 +56,7 @@ const notReal = (request, response) => {
             message: 'The page you are looking for was not found',
         };
 
-        responseJSON(request, response, 404, responseJSON);
+        respondJSON(request, response, 404, responseJSON);
 
     }else{
         respondJSONMeta(request,response, 404);
