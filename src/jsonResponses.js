@@ -36,6 +36,7 @@ const addUser = (request, response, body) => {
     let responseCode = 201;
 
     if(users[body.name]){
+        responseCode = 204;
     }else{
         users[body.name] = {};
     }
