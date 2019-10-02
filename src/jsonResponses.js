@@ -43,7 +43,7 @@ const addUser = (request, response, body) => {
     users[body.name].name = body.name;
     users[body.name].age = body.age;
 
-    if(responseCode == 201){
+    if(responseCode === 201){
         responseJSON.message = 'Created Successfully!';
         return respondJSON(request, response, responseCode, responseJSON);
     }
@@ -51,7 +51,7 @@ const addUser = (request, response, body) => {
 };
 
 const notReal = (request, response) => {
-    if(request.method == 'GET'){
+    if(request.method === 'GET'){
         const responseJSON = {
             id: 'notFound',
             message: 'The page you are looking for was not found',
