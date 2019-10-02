@@ -9,6 +9,9 @@
   const parseJSON = (xhr, content) => {
     const obj = JSON.parse(xhr.response);
 
+    //console.log(obj);
+
+    console.log('parseJSON');
     // add message to screen if it exists
     if(obj.message){
       const p = document.createElement('p');
@@ -20,7 +23,10 @@
     if(obj.users){
       const userList = document.createElement('p');
       const users = JSON.stringify(obj.users);
-      userList.textContent = userListcontent.appendChild(userList);
+      // console.log(obj.users);
+      // console.log(users);
+      userList.textContent = users;
+      content.appendChild(userList);
     }
   };
 
@@ -63,11 +69,12 @@
     const xhr = new XMLHttpRequest();
     xhr.open(nameMethod, nameAction);
 
-    xhr.setRequestHeader('Content-Type': 'application/x-www-form-urlencoded');
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.setRequestHeader('Accept', 'application/json');
     xhr.onload = () => handleResponse(xhr, true);
 
     const formData = `name=${nameField.value}&age=${ageField.value}`;
+    //console.log(formData);
     xhr.send(formData);
 
     e.preventDefault();

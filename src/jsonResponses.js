@@ -7,16 +7,16 @@ const respondJSON = (request, response, status, object) => {
 } ;
 
 const respondJSONMeta = (request, response, status) => {
-    response.writeHead(status, {'Content-Type': 'applicatoin/json'});
+    response.writeHead(status, {'Content-Type': 'application/json'});
     response.end();
 };
 
 const getUsers = (request, response) => {
-    if(request.method == 'GET'){
+    if(request.method === 'GET'){
         const responseJSON = {
             users,
         }
-        respondJSON(request, response, 200, respondJSON);
+        respondJSON(request, response, 200, responseJSON);
     }else{
         respondJSONMeta(request, response, 200);  
     }
@@ -28,6 +28,7 @@ const addUser = (request, response, body) => {
     };
 
     if(!body.name || !body.age){
+        console.log('missing params');
         responseJSON.id = 'missingParams';
         return respondJSONMeta(request, response, 400, responseJSON);
     }

@@ -10,7 +10,7 @@ const getIndex = (request, response) => {
 
 const getCSS = (request, response) => {
     response.writeHead(200, {'Content-Type': 'text/css'});
-    response.write(index);
+    response.write(css);
     response.end();
 }
 
